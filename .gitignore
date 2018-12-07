@@ -2,4 +2,4 @@ docs/
 out/
 .*pid*
 *.uml
-
+*.*bak*
