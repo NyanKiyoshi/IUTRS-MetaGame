@@ -5,14 +5,16 @@ import controllers.CRUDPersonnage;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Override the {@link OutputStream}'s {@link OutputStream#write(int)} method to redirect it
  * to a given {@link JTextArea}.
  */
-class TextAreaOutputStream extends OutputStream {
+class TextAreaOutputStream extends ByteArrayOutputStream {
     private JTextArea textArea;
 
     /**
@@ -24,22 +26,51 @@ class TextAreaOutputStream extends OutputStream {
     }
 
     /**
-     * Clears the text area's content.
+     * {@inheritDoc}
      */
-    public void clear() {
-        this.textArea.setText("");
+    @Override
+    public void write(byte[] buf) {
+        append(new String(buf, StandardCharsets.UTF_8));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void write(byte[] buf, int offset, int length) {
+        append(new String(buf, offset, length, StandardCharsets.UTF_8));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void write(int bytes) {
+        append(String.valueOf((char) bytes));
     }
 
     /**
      * Redirect the written data to the given swing text area,
      * and scroll the text area's caret to the end of the document.
      *
-     * @param bytes the bytes to write.
+     * @param string The string to append to the text area text.
      */
-    @Override
-    public void write(int bytes) {
-        textArea.append(String.valueOf((char) bytes));
-        textArea.setCaretPosition(textArea.getDocument().getLength());
+    private void append(final String string) {
+        SwingUtilities.invokeLater(new Runnable() {
+            /** {@inheritDoc} */
+            @Override
+            public void run() {
+                textArea.append(string);
+                textArea.setCaretPosition(textArea.getDocument().getLength());
+            }
+        });
+    }
+
+    /**
+     * Clears the text area's content.
+     */
+    public void clear() {
+        this.textArea.setText("");
     }
 }
 
