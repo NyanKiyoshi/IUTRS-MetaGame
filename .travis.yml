@@ -34,5 +34,4 @@ deploy:
     skip_cleanup: true
     draft: false
     on:
-      tags: true
       branch: master
