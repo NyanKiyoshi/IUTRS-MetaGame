@@ -3,8 +3,9 @@ out/
 build/
 release/
 target/
+src/classes/
 
 .*pid*
 *.uml
 *.*bak*
-
+*.xmi

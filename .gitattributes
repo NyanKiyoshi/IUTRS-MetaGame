@@ -1,2 +1,7 @@
 # force LF EOL
 * text=auto eol=lf
+
+# Hide jDev project files
+*.jpr linguist-generated
+*.uml* linguist-generated
+*.class* linguist-generated

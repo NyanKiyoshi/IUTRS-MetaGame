@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * Override the {@link OutputStream}'s {@link OutputStream#write(int)} method to redirect it
  * to a given {@link JTextArea}.
  */
-class TextAreaOutputStream extends ByteArrayOutputStream {
+class TextAreaOutputStream extends OutputStream {
     private JTextArea textArea;
 
     /**
@@ -22,6 +22,7 @@ class TextAreaOutputStream extends ByteArrayOutputStream {
      * @param textArea the component to redirect (and write) the output stream data.
      */
     TextAreaOutputStream(JTextArea textArea) {
+        super();
         this.textArea = textArea;
     }
 
@@ -147,6 +148,7 @@ class GUISelectionDialogEntryPoint extends JDialog {
 
         // Set the submit button click handler
         submitButton.addActionListener(new AbstractAction() {
+            /** {@inheritDoc} */
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // Clear and clean up the output redirection
