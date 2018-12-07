@@ -1,8 +1,7 @@
 #!/bin/sh
 
-PROJECT_PATH="$(realpath $(dirname $0))"
-
-[ -z "$JAVA_HOME_OVERRIDE" ] && JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-8-openjdk;
+export PROJECT_PATH="$(realpath $(dirname $0))"
+. "${PROJECT_PATH}/build.env"
 
 mkdir -pv "${PROJECT_PATH}/docs" \
     && "${JAVA_HOME_OVERRIDE}/bin/javadoc" \

@@ -1,5 +1,10 @@
 docs/
 out/
+build/
+release/
+target/
+
 .*pid*
 *.uml
 *.*bak*
+
