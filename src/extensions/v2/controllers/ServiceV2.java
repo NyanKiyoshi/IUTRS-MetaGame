@@ -20,6 +20,7 @@ public class ServiceV2 {
      * @param protection The hit protection of the equipment.
      *
      * @return The soldier/ character response message, if any.
+     * @throws PersonneInexistanteException Whenever the given character is non existent.
      */
     private static String ajouterEquipement(int idSoldat, String nomEquip, int puissance, int protection)
             throws PersonneInexistanteException {
@@ -44,8 +45,13 @@ public class ServiceV2 {
 
     /**
      * Donne au soldat identifie idSoldat une arme avec son nom et sa puissance offensive ;
+     *
+     * @param idSoldat The soldier's identifer (or character ID if the universe allows this behavior).
+     * @param nomArme The name of the weapon.
+     * @param puiss The weapon force.
 
      * @return Un message eventuel.
+     * @throws PersonneInexistanteException Whenever the given character is non existent.
      */
     public static String armer(int idSoldat, String nomArme, Integer puiss)
             throws PersonneInexistanteException {
@@ -57,7 +63,12 @@ public class ServiceV2 {
      * Donne au soldat identifie @link{idSoldat} une protection
      * avec son @link{nomProtec nom} et son @link{efficacite} ;
      *
+     * @param idSoldat The soldier's identifer (or character ID if the universe allows this behavior).
+     * @param nomProtec The name of the protection.
+     * @param efficacite The protection value.
+     *
      * @return Un message eventuel.
+     * @throws PersonneInexistanteException Whenever the given character is non existent.
      */
     public static String proteger(int idSoldat, String nomProtec, Integer efficacite)
             throws PersonneInexistanteException {

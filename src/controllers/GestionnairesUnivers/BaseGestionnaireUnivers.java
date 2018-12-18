@@ -54,7 +54,10 @@ public abstract class BaseGestionnaireUnivers {
     public abstract String getNomSoldat(Soldat soldat);
 
     /**
-     * Retrieves the character's total damage force.
+     * Retrieves and simulate the character's total damage force.
+     *
+     * @param personnage The attacker.
+     * @param victime The attacked.
      * @return The character's total damage force.
      */
     public int getDegats(Personnage personnage, Personnage victime) {
@@ -87,6 +90,9 @@ public abstract class BaseGestionnaireUnivers {
      *
      * @param agresseur The character that wants to hit someone.
      * @param victime The character that is or may be going to get hit, if the move is possible.
+     *
+     * @throws SourceMorteException Whenever the attacker is dead.
+     * @throws CibleMorteException Whenever the attacked is dead.
      */
     void donnerCoup(Personnage agresseur, Personnage victime)
             throws SourceMorteException, CibleMorteException {
@@ -103,6 +109,9 @@ public abstract class BaseGestionnaireUnivers {
 
     /**
      * Wraps and handles exceptions from {@link BaseGestionnaireUnivers#donnerCoup}
+     *
+     * @param agresseur The character that is attacking.
+     * @param victime The character that is getting attacked.
      * @return Whatever message to show if that's an invalid move or a success.
      */
     public abstract String frapper(Personnage agresseur, Personnage victime);
@@ -141,6 +150,7 @@ public abstract class BaseGestionnaireUnivers {
      * Makes the chef exhort themselves.
      * Must be implemented by the derived classes with a custom message.
      *
+     * @param chef The chef to exhort.
      * @return The chef's exhort message.
      */
     public abstract String exhorter(Chef chef);
@@ -164,6 +174,8 @@ public abstract class BaseGestionnaireUnivers {
      * {@code {id}:\t{full_name} ma vie est de {remaining_life}}
      *
      * In addition, it shows the character's force, if any (non-zero and positive).
+     *
+     * @param personnage The character to summarize.
      *
      * @see Chef#getId()
      * @see Chef#getVie()

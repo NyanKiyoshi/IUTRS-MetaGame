@@ -80,6 +80,8 @@ public class GestionnaireUnivers {
 
     /**
      * Sets the current universe's custom character CRUD from the instance.
+     *
+     * @param gestionnaireUnivers The new universe manager to install.
      */
     public static void set_gestionnaireUnivers(BaseGestionnaireUnivers gestionnaireUnivers) {
         c_instance._gestionnaireUnivers = gestionnaireUnivers;

@@ -41,11 +41,13 @@ public abstract class Personnage {
      * Removes a given life amount to the character's current life.
      *
      * The value can be negative if the damages are higher than the character's current life.
+     *
+     * @param damages The life to remove (can be greater than the character's remaining life).
      * @return The total damages made.
      */
-    public int donnerDegats(int baseDamages) {
-        this.vie -= baseDamages;
-        return baseDamages;
+    public int donnerDegats(int damages) {
+        this.vie -= damages;
+        return damages;
     }
 
     /**
