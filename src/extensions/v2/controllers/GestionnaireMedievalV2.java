@@ -28,4 +28,9 @@ public class GestionnaireMedievalV2 extends GestionnaireMedieval implements Base
         CharacterManager.registerEquipment(personnage, equipmentModel);
         return "Très belle pièce. Je saurais en faire bon usage.";
     }
+
+    @Override
+    public String sePresenter(Personnage personnage) {
+        return super.sePresenter(personnage) + CharacterManager.listEquipments(personnage);
+    }
 }

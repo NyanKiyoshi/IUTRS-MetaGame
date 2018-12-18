@@ -5,6 +5,7 @@ import models.Personnage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 /**
  * Manages the game characters' equipments (static class).
@@ -21,6 +22,29 @@ public class CharacterManager {
     public static ArrayList<EquipmentModel> getEquipments(Personnage personnage) {
         return _equipmentCharacters.computeIfAbsent(
             personnage, k -> new ArrayList<>());
+    }
+
+    /**
+     * Lists the equipments of the characters.
+     * @param personnage The character to list the equipment from.
+     * @return The list of the equipments description.
+     */
+    public static String listEquipments(Personnage personnage) {
+        ArrayList<EquipmentModel> listEquipments = getEquipments(personnage);
+
+        // If the character has no equipment, do nothing
+        if (listEquipments.isEmpty()) {
+            return "";
+        }
+
+        // Start a comma separated string joiner
+        StringJoiner descriptionEquipments = new StringJoiner(", ");
+
+        // Append every solder's name to it
+        getEquipments(personnage).forEach(
+            equipmentModel -> descriptionEquipments.add(equipmentModel.toString()));
+
+        return " ; Mes équipements : " + descriptionEquipments.toString();
     }
 
     /**

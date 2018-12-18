@@ -31,4 +31,10 @@ public class EquipmentModel {
         this.valeurDegats = valeurDegats;
         this.valueProtection = valueProtection;
     }
+
+    public String toString() {
+        return String.format(
+            "%s avec %d dégâts et %d protection",
+            this.nom, this.valeurDegats, this.valueProtection);
+    }
 }

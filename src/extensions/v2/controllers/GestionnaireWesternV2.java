@@ -28,4 +28,9 @@ public class GestionnaireWesternV2 extends GestionnaireWestern implements BaseV2
         CharacterManager.registerEquipment(personnage, equipmentModel);
         return "What a piece of GARBAGE.";
     }
+
+    @Override
+    public String sePresenter(Personnage personnage) {
+        return super.sePresenter(personnage) + CharacterManager.listEquipments(personnage);
+    }
 }

@@ -6,6 +6,10 @@ import controllers.GestionnairesUnivers.GestionnaireMedieval;
 import controllers.GestionnairesUnivers.GestionnaireWestern;
 import extensions.IExtensionDeGestionnaire;
 
+/**
+ * The V2 extension's loader, need to get called to activate it
+ * for the extension to wrap the universes.
+ */
 public class V2Loader implements IExtensionDeGestionnaire {
     @Override
     public void Load() {
