@@ -8,12 +8,7 @@ import java.util.StringJoiner;
 /**
  * A base {@link Chef chef}'s definition.
  */
-public abstract class Chef extends Personnage {
-    /**
-     * Flag the {@link Personnage character} as being a chef.
-     */
-    private final boolean isChef = true;  // noqa
-
+public class Chef extends Personnage {
     /**
      * The chef's full name prefix.
      */
@@ -67,14 +62,6 @@ public abstract class Chef extends Personnage {
     }
 
     /**
-     * Makes the chef exhort themselves.
-     * Must be implemented by the derived classes with a custom message.
-     *
-     * @return The chef's exhort message.
-     */
-    public abstract String exhorter();
-
-    /**
      * Retrieves the chef's full name prefix.
      * @return The chef's full name prefix.
      */
@@ -104,5 +91,13 @@ public abstract class Chef extends Personnage {
 
         // Return the joined string
         return nomsSoldats.toString();
+    }
+
+    /**
+     * Returns the list of the chef's soldiers.
+     * @return The chef's soldiers list.
+     */
+    public ArrayList<Soldat> getSoldatsSousOrdres() {
+        return soldatsSousOrdres;
     }
 }

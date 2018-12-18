@@ -2,6 +2,8 @@ package views.Scenarios;
 
 import controllers.CRUDPersonnage;
 import controllers.Service;
+import extensions.v2.controllers.ServiceV2;
+import extensions.v2.controllers.V2Loader;
 import models.Exceptions.PersonneInexistanteException;
 
 import javax.naming.OperationNotSupportedException;
@@ -12,6 +14,9 @@ import javax.naming.OperationNotSupportedException;
 public class Scenario2EntryPoint {
     public static Void scenario() throws PersonneInexistanteException, OperationNotSupportedException {
         System.out.println("=================SCENARIO 2 ====================");
+        System.out.println("================= Chargement de l'extension (V2) ===============");
+        new V2Loader().Load();
+
         System.out.println("================= les cas standards ===============");
 
         int p1 = Service.creerSoldat("Alex    ", 10);
@@ -22,6 +27,12 @@ public class Scenario2EntryPoint {
         int p6 = Service.creerChef("Henri", " celebre ");
         int p7 = Service.creerChef("Louis", "terrible");
         int p8 = Service.creerSoldat("LeFort", 50);
+
+        System.out.println("================= Ajout d'armes ===============");
+        System.out.println(ServiceV2.armer(p3, "Glave", 500));
+        System.out.println(ServiceV2.proteger(p1, "Bouclier", 5));
+        System.out.println(ServiceV2.proteger(p4, "Bouclier", 7));
+        System.out.println(ServiceV2.armer(p6, "blah", 10));
 
         System.out.println("=================Presentation individuelle ====================");
         System.out.println(Service.presentation(p1));
@@ -61,6 +72,7 @@ public class Scenario2EntryPoint {
         System.out.println(Service.confier(p5, p7));
         int p9 = Service.creerSoldat("Gael", 10);
         System.out.println(Service.confier(p9, p6));
+        System.out.println(ServiceV2.armer(p6, "blah", 10));
 
         // Delete a dead chef
         Service.supprimerPers(p6);

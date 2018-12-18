@@ -2,8 +2,9 @@ package controllers;
 
 import controllers.GestionnairesUnivers.*;
 import models.*;
-import models.MedievalPack.*;
-import models.WesternPack.*;
+import models.Univers.BaseUnivers;
+import models.Univers.UniversMedieval;
+import models.Univers.UniversWestern;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +14,7 @@ import java.io.IOException;
  * Manages the game's context by retrieving (implicitly) the targeted or default universe
  * (its {@link BaseUnivers parameters}, and its {@link BaseGestionnaireUnivers character CRUD}).
  */
-class GestionnaireUnivers {
+public class GestionnaireUnivers {
     /**
      * The current universe's context (hard-coded parameters).
      */
@@ -75,5 +76,12 @@ class GestionnaireUnivers {
      */
     public static BaseGestionnaireUnivers get_gestionnaireUnivers() {
         return c_instance._gestionnaireUnivers;
+    }
+
+    /**
+     * Sets the current universe's custom character CRUD from the instance.
+     */
+    public static void set_gestionnaireUnivers(BaseGestionnaireUnivers gestionnaireUnivers) {
+        c_instance._gestionnaireUnivers = gestionnaireUnivers;
     }
 }

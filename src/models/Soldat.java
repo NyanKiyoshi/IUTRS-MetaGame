@@ -6,7 +6,7 @@ import models.Exceptions.SourceMorteException;
 /**
  * A base {@link Soldat soldier}'s definition.
  */
-public abstract class Soldat extends Personnage {
+public class Soldat extends Personnage {
     /**
      * The soldier's associated current chef (nullable).
      */
@@ -52,5 +52,13 @@ public abstract class Soldat extends Personnage {
             this.chef.soldatsSousOrdres.remove(this);
         }
         this.chef = null;
+    }
+
+    /**
+     * Retrieves the chef of the soldier.
+     * @return The soldier's chef.
+     */
+    public Chef getChef() {
+        return this.chef;
     }
 }

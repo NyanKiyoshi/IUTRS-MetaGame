@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import models.Exceptions.*;
+import models.Univers.BaseUnivers;
 
 import javax.naming.OperationNotSupportedException;
 import java.util.ArrayList;
@@ -72,7 +73,8 @@ public class Service {
      * @return The character's introduction message.
      */
     public static String presentation(int idPersonnage) throws PersonneInexistanteException {
-        return CRUDPersonnage.get(idPersonnage).sePresenter();
+        return GestionnaireUnivers.get_gestionnaireUnivers()
+            .sePresenter(CRUDPersonnage.get(idPersonnage));
     }
 
     /**
@@ -83,7 +85,10 @@ public class Service {
         Collection<String> returnedPresentations = new ArrayList<>();
 
         CRUDPersonnage.getPersonnages().forEach(
-                personnage -> returnedPresentations.add(personnage.sePresenter()));
+            personnage -> returnedPresentations.add(
+                GestionnaireUnivers.get_gestionnaireUnivers().sePresenter(personnage)
+            )
+        );
 
         return returnedPresentations;
     }
@@ -96,7 +101,8 @@ public class Service {
      * @return The exhortation of the given {@link Chef chef}.
      */
     public static String exhorter(int idChef) throws PersonneInexistanteException {
-        return ((Chef) CRUDPersonnage.get(idChef)).exhorter();
+        return GestionnaireUnivers.get_gestionnaireUnivers()
+            .exhorter((Chef) CRUDPersonnage.get(idChef));
     }
 
     /**

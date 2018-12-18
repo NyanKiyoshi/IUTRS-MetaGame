@@ -1,6 +1,4 @@
-package models.MedievalPack;
-
-import models.BaseUnivers;
+package models.Univers;
 
 /**
  * Defines a medieval universe's context and behavior.

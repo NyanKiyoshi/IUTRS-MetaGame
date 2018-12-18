@@ -1,17 +1,9 @@
 package models;
 
-import models.Exceptions.*;
-
 /**
  * Defines a base character's data and behaviors.
  */
 public abstract class Personnage {
-    /**
-     * Whether this character type is a chef.
-     * A base character is not a chef by default.
-     */
-    private final boolean isChef = false;
-
     /**
      * The character's identifier.
      */
@@ -46,21 +38,14 @@ public abstract class Personnage {
     }
 
     /**
-     * The base definition for receiving a hit from a given source.
-     * This will reduce the character's life by the source's {@link #force} amount.
+     * Removes a given life amount to the character's current life.
      *
-     * @param source The character that wants to hit this character.
-     * @throws CibleMorteException Happens when this character is dead, they can no longer be hit, once dead.
+     * The value can be negative if the damages are higher than the character's current life.
+     * @return The total damages made.
      */
-    protected void seFaireFrapper(Personnage source) throws CibleMorteException {
-        // If dead, raise an exception, characters can't hit dead peoples
-        if (this.estMort()) {
-            throw new CibleMorteException();
-        }
-
-        // If the character is still alive, remove the hitting force to the character's life.
-        // Disclaimer: this is a requirement to allow a negative life.
-        this.vie -= source.getForce();
+    public int donnerDegats(int baseDamages) {
+        this.vie -= baseDamages;
+        return baseDamages;
     }
 
     /**
@@ -79,54 +64,12 @@ public abstract class Personnage {
     }
 
     /**
-     * The base introduction of a character. This returns the following base format:
-     * {@code {id}:\t{full_name} ma vie est de {remaining_life}}
-     *
-     * In addition, it shows the character's force, if any (non-zero and positive).
-     *
-     * @see Chef#getId()
-     * @see Chef#getVie()
-     * @see Chef#getNom()
-     *
-     * @return The character's base introduction text.
-     */
-    public String sePresenter() {
-        // The base format: {id}:\t{full_name} ma vie est de {remaining_life}
-        String presentationMessage = String.format(
-                "%d:\t%s ma vie est de %d", this.getId(), this.getNom(), this.getVie());
-
-        // If the character has a hitting force, show it
-        if (this.force > 0) {
-            presentationMessage += " ; ma force est de " + this.force;
-        }
-
-        return presentationMessage;
-    }
-
-    /**
      * A method that clean up the character whenever invoked for proper deletion.
      * @return A custom message, if any.
      */
     public String seFaireSupprimer() {
         // Nothing to do by default
         return "";
-    }
-
-    /**
-     * Instructs the character to hit a given target.
-     *
-     * @param cible The target to hit.
-     * @throws SourceMorteException Happens when this character is dead, they can't hit when being dead.
-     * @throws CibleMorteException Happens when the target to hit is dead, they cannot be hit when dead.
-     */
-    public void frapper(Personnage cible) throws SourceMorteException, CibleMorteException {
-        // If this character is dead, raise an exception, the move is invalid.
-        if (this.estMort()) {
-            throw new SourceMorteException();
-        }
-
-        // Otherwise, attempt to hit the target.
-        cible.seFaireFrapper(this);
     }
 
     /**
@@ -161,12 +104,15 @@ public abstract class Personnage {
         return vie;
     }
 
+
     /**
-     * Looks whether the character is a chef or not.
-     * @return {@code True} if the character is dead.
+     * Whether this character type is a chef.
+     * A base character is not a chef by default.
+     *
+     * @return True if the character is a chef;
      */
     public boolean isChef() {
-        return isChef;
+        return this instanceof Chef;
     }
 
     /**

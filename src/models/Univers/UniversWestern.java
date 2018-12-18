@@ -1,6 +1,4 @@
-package models.WesternPack;
-
-import models.BaseUnivers;
+package models.Univers;
 
 /**
  * Defines a western universe's context and behavior.

@@ -1,4 +1,4 @@
-package models;
+package models.Univers;
 
 /**
  * Defines a base universe context, with its hard-coded parameters.
