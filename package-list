@@ -1,8 +1,10 @@
 controllers
 controllers.GestionnairesUnivers
+extensions
+extensions.v2.controllers
+extensions.v2.models
 models
 models.Exceptions
-models.MedievalPack
-models.WesternPack
+models.Univers
 views
 views.Scenarios
