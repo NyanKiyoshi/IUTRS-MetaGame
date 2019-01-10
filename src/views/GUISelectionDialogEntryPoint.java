@@ -5,9 +5,7 @@ import controllers.CRUDPersonnage;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -111,6 +109,12 @@ class GUISelectionDialogEntryPoint extends JDialog {
         // going to the text area
         System.setOut(printStream);
         System.setErr(printStream);
+        System.setIn(new InputStream() {
+            @Override
+            public int read() throws IOException {
+                return 0;
+            }
+        });
 
         // Create the base GUI layout
         setLayout(new GridBagLayout());

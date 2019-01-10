@@ -53,8 +53,8 @@ public class Chef extends Personnage {
      */
     public String seFaireSupprimer() {
         // Unset the troop's chef
-        for (Soldat soldat: soldatsSousOrdres) {
-            soldat.unsetChef();
+        for (int i = 0; i < soldatsSousOrdres.size(); i++) {
+            soldatsSousOrdres.get(i).unsetChef();
         }
 
         // Call the base
