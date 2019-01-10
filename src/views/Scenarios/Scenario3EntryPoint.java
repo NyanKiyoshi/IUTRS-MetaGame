@@ -13,7 +13,9 @@ import javax.naming.OperationNotSupportedException;
 public class Scenario3EntryPoint {
     public static Void scenario() throws PersonneInexistanteException, OperationNotSupportedException {
         new V2Loader().Load();
-        // *** [1] Création des personnages
+
+        System.out.println("==================Scénario de démonstration==================");
+        System.out.println();
         // *** [1] Création des personnages
         System.out.println("Creation de personnages...");
         System.out.println();
@@ -29,7 +31,6 @@ public class Scenario3EntryPoint {
         int soldatLeopold = Service.creerSoldat("Leopold", 10);    //armer et armer
 
         System.out.println(Service.presentationGenerale());
-
         System.out.println("===============================================================");
 
         // *** [2] Création des chefs
@@ -40,7 +41,6 @@ public class Scenario3EntryPoint {
 
         System.out.println(Service.presentation(10));
         System.out.println(Service.presentation(11));
-
         System.out.println("===============================================================");
 
         // *** [3] Présentation d'un chef sans soldats
@@ -48,6 +48,7 @@ public class Scenario3EntryPoint {
         System.out.println();
         System.out.println(Service.presentation(chefBob) + '\n');
         System.out.println("===============================================================");
+
         // *** [4] Présentation d'un soldat sans chef
         System.out.println("Presentation d'un soldat sans chef...");
         System.out.println();
@@ -56,9 +57,15 @@ public class Scenario3EntryPoint {
 
         // *** [5] Confier des soldats à un chef
         System.out.println("Confie les soldats Alex et Martin au chef Bob, le soldat Jeanne au chef Dye");
+        System.out.println();
         System.out.println(Service.confier(soldatAlex, chefBob));
         System.out.println(Service.confier(soldatMartin, chefBob));
         System.out.println(Service.confier(soldatJeanne, chefDye) + '\n');
+
+        System.out.println(Service.presentation(10));
+        System.out.println(Service.presentation(11));
+        System.out.println("===============================================================");
+        System.out.println();
 
         // *** [6] Confier des armes et des protections
         System.out.println("\tPrésentation du soldat Jeanne avant l'attribution");
@@ -68,6 +75,10 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat Jeanne après l'attribution");
         System.out.println("\t\t" + Service.presentation(soldatJeanne) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
+
         System.out.println("\tPrésentation du soldat Martin avant l'attribution");
         System.out.println("\t\t" + Service.presentation(soldatMartin) + '\n');
         System.out.println("\tAttribution d'une Epee de puissance 100 au soldat Martin");
@@ -75,14 +86,22 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat Martin après l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatMartin) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
+
         System.out.println("\tPrésentation du soldat Leopold avant l'attribution");
         System.out.println("\t\t" + Service.presentation(soldatLeopold) + '\n');
         System.out.println("\tAttribution d'une Epee de puissance 100 au soldat Leopold");
         System.out.println("\t\t" + ServiceV2.armer(soldatLeopold, "Epée", 100));
         System.out.println("\tPrésentation du soldat Leopold après l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatLeopold) + '\n');
+        System.out.println("===============================================================");
 
         System.out.println("Attribution des protections aux soldats");
+
+        System.out.println("===============================================================");
+        System.out.println();
 
         System.out.println("\tAttribution d'un Bouclier anti-émeute de protection 200 au Soldat Henri");
         System.out.println("\tPrésentation du soldat Henri avant l'attribution.");
@@ -91,6 +110,10 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat Henri après l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatHenri) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
+
         System.out.println("\tAttribution d'un Armure de protection 400 au Soldat Carolus");
         System.out.println("\tPrésentation du soldat Carolus avant l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatCarolus) + '\n');
@@ -98,12 +121,20 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat Carolus après l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatCarolus) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
+
         System.out.println("\tAttribution d'un Armure de protection 400 au Soldat LeFort");
         System.out.println("\tPrésentation du soldat LeFort avant l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatLeFort));
         System.out.println("\t\t" + ServiceV2.proteger(soldatCarolus, "Armure", 400));
         System.out.println("\tPrésentation du soldat LeFort après l'attribution.");
         System.out.println("\t\t" + Service.presentation(soldatLeFort) + '\n');
+
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
 
         // *** [6a] Confier un arme et une protection à un soldat qui a déjà été armé ou protégé
         System.out.println("\tPresentation du soldat Leopold avant l'attribution d'une arme.");
@@ -113,12 +144,20 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat LeFort après l'attribution d'une arme.");
         System.out.println(Service.presentation(soldatLeopold) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
+
         System.out.println("\tPresentation du soldat Carolus avant l'attribution d'une protection.");
         System.out.println(Service.presentation(soldatCarolus));
         System.out.println("Attribution d'un Baton de puissance 10 au Soldat Carolus");
         System.out.println(ServiceV2.proteger(soldatCarolus, "Baton", 10));
         System.out.println("\tPresentation du soldat Carolus après l'attribution d'une protection.");
         System.out.println(Service.presentation(soldatCarolus) + '\n');
+
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
 
         // *** [6b] Confier une arme à un soldat protéger
         System.out.println("\tPrésentation du soldat LeFort avant l'attribution d'une arme.");
@@ -128,6 +167,10 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat LeFort après l'attribution d'une arme.");
         System.out.println(Service.presentation(soldatLeFort) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+        System.out.println();
+
         // *** [6c] Confier une protection à un soldat armé
         System.out.println("\tPrésentation du soldat Martin avant l'attribution d'une protection.");
         System.out.println(Service.presentation(soldatMartin));
@@ -136,25 +179,35 @@ public class Scenario3EntryPoint {
         System.out.println("\tPrésentation du soldat Martin après l'attribution d'une protection.");
         System.out.println(Service.presentation(soldatMartin) + '\n');
 
+        System.out.println();
+        System.out.println("===============================================================");
+
         // *** [7] Montrer qu'un chef ne peut avoir d'arme ou de protection
         System.out.println("Attribution d'une arme à un chef");
+        System.out.println();
 
         System.out.println("Attribution d'une Epee de puissance 100 au Chef Bob");
         System.out.println(ServiceV2.armer(chefBob, "Epée", 100));
         System.out.println(Service.presentation(chefBob) + '\n');
 
-        System.out.println("Attribution d'une protection a un chef");
+        System.out.println("===============================================================");
 
-        System.out.println("Attribution d'un Armure de protection 400 au Chef Bob");
+        System.out.println("Attribution d'une protection a un chef");
+        System.out.println();
+
+        System.out.println("-> Attribution d'un Armure de protection 400 au Chef Bob");
         System.out.println(ServiceV2.proteger(chefBob, "Armure", 400));
         System.out.println(Service.presentation(chefBob) + '\n');
+        System.out.println("===============================================================");
 
-        // *** [8] Présentation générale
+        // *** [8] Présentation générale 
         //     (note: Alex a désormais un chef sur sa présentation)
         System.out.println("Presentation generale (equipements et personnages confies inclus)");
         for (String presLigne : Service.presentationGenerale()) {
             System.out.println(presLigne);
         }
+        System.out.println("===============================================================");
+        System.out.println("Combats");
 
         // *** [9] Faire exhorter les chefs avant combat
         System.out.println("Exhortation des chefs avant le combat");
@@ -222,17 +275,20 @@ public class Scenario3EntryPoint {
         System.out.println(ServiceV2.proteger(soldatBernard, "Bouclier", 100));
         System.out.println(Service.presentation(soldatBernard) + '\n');
 
-        // *** [19] La protection diminue les dégâts subis d’un montant égal à son efficacité
+        // *** [19] La protection diminue les dégâts subis d’un montant égal à son efficacité 
         System.out.println("Efficacite des equipement de protection");
-        System.out.println("Presentation du mannequin");
+        System.out.println("Presentation du mannequin avant le combat");
         System.out.println(Service.presentation(soldatEntrainement));
-        System.out.println("On le tape ! PAF !");
+        System.out.println("Presentation du soldat Alex qui va le frapper avant le combat");
+        System.out.println(Service.presentation(soldatAlex));
+        System.out.println("Le soldat Alex frappe le manequin !");
         System.out.println(Service.frapper(soldatAlex, soldatEntrainement));
         System.out.println("Il a perdu de la vie !");
         System.out.println(Service.presentation(soldatEntrainement));
         System.out.println("Attribution d'une patate d'entrainement au mannequin de bois");
-        System.out.println(ServiceV2.proteger(soldatEntrainement, "Patate d'entrainement", 1));
-        System.out.println("On le retape ! PIF !");
+        System.out.println("Presentation du soldat Alex qui va le frapper avant le combat");
+        System.out.println(Service.presentation(soldatAlex));
+        System.out.println("Le soldat Alex retape le mannequi!");
         System.out.println(Service.frapper(soldatAlex, soldatEntrainement));
         System.out.println("Il a perdu moins de vie cette fois !");
         System.out.println(Service.presentation(soldatEntrainement) + '\n');
@@ -241,6 +297,7 @@ public class Scenario3EntryPoint {
         System.out.println("Supprimer un soldat vivant");
         try {
             System.out.println(Service.supprimerPers(soldatAlex) + '\n');
+            throw new AssertionError("Managed to delete someone alive.");
         }
         catch (UnsupportedOperationException exc) {
             System.err.println(exc.getMessage());
@@ -249,7 +306,7 @@ public class Scenario3EntryPoint {
         System.out.println("Supprimer un chef vivant");
         try {
             System.out.println(Service.supprimerPers(chefBob) + '\n');
-            throw new AssertionError("The character was deleted.");
+            throw new AssertionError("Managed to delete someone alive.");
         }
         catch (UnsupportedOperationException exc) {
             System.err.println(exc.getMessage());
