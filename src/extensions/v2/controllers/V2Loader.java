@@ -20,7 +20,7 @@ public class V2Loader implements IExtensionDeGestionnaire {
             GestionnaireUnivers.set_gestionnaireUnivers(new GestionnaireMedievalV2());
         }
         else if (gestionnaireUniversCourant instanceof GestionnaireWestern) {
-            GestionnaireUnivers.set_gestionnaireUnivers(new GestionnaireMedievalV2());
+            GestionnaireUnivers.set_gestionnaireUnivers(new GestionnaireWesternV2());
         }
         else {
             throw new UnsupportedOperationException(String.format(

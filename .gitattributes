@@ -5,3 +5,5 @@
 *.jpr linguist-generated
 *.uml* linguist-generated
 *.class* linguist-generated
+
+Scenario*.java linguist-generated

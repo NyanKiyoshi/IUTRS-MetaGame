@@ -71,7 +71,7 @@ public abstract class Personnage {
      */
     public String seFaireSupprimer() {
         // Nothing to do by default
-        return "";
+        return "Je suis désormais supprimé...";
     }
 
     /**
