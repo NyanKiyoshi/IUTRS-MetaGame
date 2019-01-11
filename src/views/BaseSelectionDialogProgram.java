@@ -9,7 +9,7 @@ import java.util.concurrent.Callable;
  * This manages internally the different available scenarios and allow
  * the user to select one of many (dynamically).
  */
-class BaseSelectionDialogProgram {
+public class BaseSelectionDialogProgram {
     /**
      * The available scenarios (callable returning nothing ({@link Void}).
      */
